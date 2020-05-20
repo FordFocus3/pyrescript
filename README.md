@@ -21,3 +21,24 @@ Bower - это хранилище пакетов, подобное Hackage. Чт
 ```
 bower install --save purescript-integers
 ```
+# Прстой пример
+Как только вы всё настроили - время побаловаться с языком. В то время как Purescript компилируется в Javascript, сам язык на самом деле больше похож на Haskell! Мы рассмотрим это в сравнении. Предположим, мы хотим найти все пифагорские тройки, чья сумма меньше 100. Вот как мы можем написать это решение на Хаскеле:
+```
+sourceList :: [Int]
+sourceList = [1..100]
+allTriples :: [(Int, Int, Int)]
+allTriples =
+  [(a, b, c) | a <- sourceList, b <- sourceList, c <- sourceList]
+isPythagorean :: (Int, Int, Int) -> Bool
+isPythagorean (a, b, c) = a ^ 2 + b ^ 2 == c ^ 2
+isSmallEnough :: (Int, Int, Int) -> Bool
+isSmallEnough (a, b, c) = a + b + c < 100
+finalAnswer :: [(Int, Int, Int)]
+finalAnswer = filter 
+  (\t -> isPythagorean t && isSmallEnough t)
+    allTriples
+```
+Давайте создадим модуль в Purescript, который позволит нам решить эту же проблему. Начнем с написания модуля ```Pythagoras.purs```. Вот код, который мы напишем, чтобы он соответствовал описанному выше Haskell. Мы рассмотрим детали по частям ниже.
+```
+
+```
